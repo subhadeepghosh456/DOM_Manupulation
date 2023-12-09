@@ -71,3 +71,29 @@ document
   .addEventListener("click", function () {
     document.querySelector(".cookie-message").remove();
   });
+
+//Styles
+
+message.style.backgroundColor = "#37383d";
+message.style.width = "100%";
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseInt(getComputedStyle(message).height) + 30 + "px";
+
+//Attribute
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+logo.alt = "minimilistic logo";
+console.log(logo.src);
+console.log(logo.getAttribute("designer"));
+logo.setAttribute("company", "ghosh");
+
+//classes
+
+logo.classList.add("c", "j");
+logo.classList.remove("c", "j");
+logo.classList.toggle("c");
+logo.classList.contains("c");
