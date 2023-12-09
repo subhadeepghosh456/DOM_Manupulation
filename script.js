@@ -43,3 +43,31 @@ console.log(allsections);
 const allButtons = document.getElementsByTagName("button");
 //HTMLcollection
 console.log(allButtons);
+//creating new element
+
+const message = document.createElement("div");
+const header = document.querySelector(".header");
+console.log(header);
+message.classList.add("cookie-message");
+// message.textContent = "We use cookies for improved functionality and analytics";
+
+message.innerHTML =
+  "We use cookies for improved functionality and analytics.<button class='btn btn--close-cookie'>Got it!</button>";
+header.append(message);
+//header.prepend(message.cloneNode(true));
+/*
+
+if you want to insert same element mutiple places then you have to use -> message.cloneNode(true);
+
+
+*/
+//header.before(message);
+//header.after(message);
+
+//Delete elements
+
+document
+  .querySelector(".btn--close-cookie")
+  .addEventListener("click", function () {
+    document.querySelector(".cookie-message").remove();
+  });
