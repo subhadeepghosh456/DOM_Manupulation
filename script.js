@@ -77,18 +77,18 @@ document
 message.style.backgroundColor = "#37383d";
 message.style.width = "100%";
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+//console.log(getComputedStyle(message).color);
+//console.log(getComputedStyle(message).height);
 
 message.style.height =
   Number.parseInt(getComputedStyle(message).height) + 30 + "px";
 
 //Attribute
 const logo = document.querySelector(".nav__logo");
-console.log(logo.alt);
+//console.log(logo.alt);
 logo.alt = "minimilistic logo";
-console.log(logo.src);
-console.log(logo.getAttribute("designer"));
+//console.log(logo.src);
+//console.log(logo.getAttribute("designer"));
 logo.setAttribute("company", "ghosh");
 
 //classes
@@ -97,3 +97,29 @@ logo.classList.add("c", "j");
 logo.classList.remove("c", "j");
 logo.classList.toggle("c");
 logo.classList.contains("c");
+
+// Smooth scrolling
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1cords = section1.getBoundingClientRect();
+  //console.log(s1cords);
+  //console.log(e.target.getBoundingClientRect());
+
+  // console.log("Current scroll (X/Y) ", pageXOffset, pageYOffset);
+  // console.log(
+  //   "height/width view port",
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+
+  window.scrollTo({
+    left: s1cords.left + window.scrollX,
+    top: s1cords.top + window.scrollY,
+    behavior: "smooth",
+  });
+
+  // section1.scrollIntoView({ behavior: "smooth" }); //supports only in modern browser
+});

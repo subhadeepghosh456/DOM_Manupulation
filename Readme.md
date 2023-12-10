@@ -16,3 +16,5 @@ logo.classList.add('c', 'j');
 logo.classList.remove('c', 'j');
 logo.classList.toggle('c');
 logo.classList.contains('c')
+
+section1.scrollIntoView({ behavior: "smooth" });
