@@ -309,7 +309,7 @@ const allSections = document.querySelectorAll(".section");
 const sectionObserver = new IntersectionObserver(
   function (entries, observer) {
     const [entry] = entries;
-    console.log(entry);
+    // console.log(entry);
     if (!entry.isIntersecting) return;
 
     entry.target.classList.remove("section--hidden");
@@ -322,3 +322,30 @@ allSections.forEach(function (section) {
   section.classList.add("section--hidden");
   sectionObserver.observe(section);
 });
+
+//Lazy Load Images
+
+const imgTargets = document.querySelectorAll("img[data-src]");
+
+const imgObserver = new IntersectionObserver(
+  function (entries, observer) {
+    const [entry] = entries;
+    console.log(entry);
+
+    if (!entry.isIntersecting) return;
+
+    entry.target.src = entry.target.dataset.src;
+
+    entry.target.addEventListener("load", function () {
+      entry.target.classList.remove("lazy-img");
+    });
+
+    observer.unobserve(entry.target);
+  },
+  {
+    root: null,
+    threshold: 1,
+  }
+);
+
+imgTargets.forEach((img) => imgObserver.observe(img));
